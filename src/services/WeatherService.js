@@ -6,7 +6,7 @@ const apiKey = 'CN37hasX3NF7aSmaxuMBeFY0G2dB2VAT';
 
 
 const defaultLan = 'en-us';
-const baseUrl = `http://dataservice.accuweather.com/`
+const baseUrl = `https://dataservice.accuweather.com/`
 const urlAoutocompleteLocationSearch = `locations/v1/cities/autocomplete`
 const urlForcastsByCity = `forecasts/v1/daily/5day`
 const urlCurrWeather = `currentconditions/v1`
