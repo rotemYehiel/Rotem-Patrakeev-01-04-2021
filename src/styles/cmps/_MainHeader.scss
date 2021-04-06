@@ -1,0 +1,27 @@
+.main-header-cmp {
+    height: 8vh;
+    .btn-light,
+    .btn-dark {
+        background-color: unset;
+        border: unset;
+    }
+    .navbar-collapse {
+        width: 100vw;
+        position: absolute;
+        left: 0px;
+        top: 8vh;
+        z-index: 100;
+        padding-left: 1rem;
+    }
+}
+
+@include lg {
+    .main-header-cmp {
+        height: unset;
+        .navbar-collapse {
+            width: unset;
+            position: initial;
+            padding-left: 0;
+        }
+    }
+}

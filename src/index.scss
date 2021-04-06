@@ -1,0 +1,28 @@
+/* SETUP*/
+
+@import './styles/setup/typography';
+@import './styles/setup/variables';
+@import './styles/setup/mixins';
+
+/* BASICS*/
+
+@import './styles/basics/base';
+
+/* PAGES */
+
+@import './styles/pages/HomePage.scss';
+@import './styles/pages/Favorites.scss';
+
+/* CMPS */
+
+@import './styles/cmps/MainHeader.scss';
+@import './styles/cmps/CitiesOptionsList';
+@import './styles/cmps/WeatherCard';
+@import './styles/cmps/WeatherDetails.scss';
+@import './styles/cmps/ForecastsList.scss';
+@import './styles/cmps/DayCard.scss';
+
+/* DEFAULTS */
+
+//bootstrap
+@import '~bootstrap/scss/bootstrap.scss';

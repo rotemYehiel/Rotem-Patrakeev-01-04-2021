@@ -1,0 +1,54 @@
+/* Media queries Breakpoint mixins */
+
+@mixin sm {
+    @media (min-width: 576px) {
+        @content;
+    }
+}
+
+// Medium devices (tablets, 768px and up)
+@mixin md {
+    @media (min-width: 768px) {
+        @content;
+    }
+}
+
+// Large devices (desktops, 992px and up)
+@mixin lg {
+    @media (min-width: 992px) {
+        @content;
+    }
+}
+
+// X-Large devices (large desktops, 1200px and up)
+@mixin xl {
+    @media (min-width: 1200px) {
+        @content;
+    }
+}
+
+// XX-Large devices (larger desktops, 1400px and up)
+@mixin xxl {
+    @media (min-width: 1400px) {
+        @content;
+    }
+}
+
+
+/* Helper Mixins */
+
+@mixin clean-list {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+@mixin clear-button {
+    background-color: transparent;
+    border: none;
+    font-size: inherit;
+    color: inherit;
+    margin: 0px;
+    padding: 0px;
+    outline: none;
+}

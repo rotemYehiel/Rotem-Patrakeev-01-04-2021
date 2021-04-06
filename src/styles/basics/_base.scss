@@ -1,0 +1,88 @@
+html,
+body {
+    min-height: 100vh;
+}
+
+body {
+    font-family: PassionOne-Regular, sans-serif;
+    overflow-y: unset;
+    overflow-x: hidden;
+}
+
+.App {
+    min-height: 100vh;
+    font-family: PassionOne-Regular, sans-serif;
+    .temp-units-btn {
+        width: 3rem;
+        height: 3rem;
+        position: fixed;
+        z-index: 101;
+        right: 0;
+        bottom: 2rem;
+        padding: 0.4rem 1rem;
+        border: 0.05rem solid transparent;
+        border-radius: 50%;
+        font-size: 1.5rem;
+        border-bottom-right-radius: 0;
+        border-top-right-radius: 0;
+    }
+    main {
+        display: flex;
+        justify-content: center;
+    }
+}
+
+@include sm {
+    .App {
+        min-width: $sm;
+    }
+}
+
+@include md {
+    .App {
+        min-width: $md;
+        .temp-units-btn {
+            top: 15%;
+        }
+    }
+}
+
+@include lg {
+    .App {
+        min-width: $lg;
+        .temp-units-btn {
+            top: 5rem;
+        }
+    }
+}
+
+@include xl {
+    .App {
+        min-width: $xl;
+    }
+}
+
+@include xxl {
+    body {
+        overflow-y: hidden;
+    }
+    .App {
+        min-width: $xxl;
+    }
+}
+
+.dark-mode {
+    background-color: $dark-bg;
+    color: #fff;
+    .cmp {
+        background-color: $dark-cmp-bg;
+    }
+}
+
+.light-mode {
+    background-color: $light-bg;
+    color: #000000e6;
+    .cmp {
+        background-color: $light-cmp-bg;
+    }
+}

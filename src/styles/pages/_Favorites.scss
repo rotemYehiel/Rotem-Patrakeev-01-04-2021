@@ -1,0 +1,106 @@
+.Favorites-page {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    .cmp-header {
+        justify-content: center;
+    }
+    .alert {
+        width: 100%;
+        .go-home-btn {
+            margin-left: 0.5rem;
+        }
+    }
+    .container {
+        justify-content: center;
+        padding: 0;
+        .row-in-favorite {
+            margin: 0;
+            justify-content: center;
+            margin-bottom: 2rem;
+            .col-in-favorite {
+                flex: 0 0 50%;
+                max-width: 50%;
+                position: relative;
+                width: 100%;
+                padding-right: 15px;
+                padding-left: 15px;
+                display: flex;
+                margin-bottom: 1rem;
+                max-width: 100%;
+                .link-to-city {
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+}
+
+@include sm {
+    .Favorites-page {
+        padding: 1rem 0;
+        .cmp-header {
+            display: flex;
+        }
+        .container {
+            margin: 0;
+            padding: 0;
+            align-self: center;
+            .row {
+                margin: 0;
+                padding: 0;
+            }
+            .row-in-favorite {
+                margin: 0;
+                justify-content: center;
+                align-items: center;
+                margin-bottom: 2rem;
+                padding: 0;
+                .col-in-favorite {
+                    margin: 0;
+                    padding: 0;
+                    flex: 0 0 33.33333%;
+                    max-width: 33.33333%;
+                    position: relative;
+                    width: 100%;
+                    padding-right: 15px;
+                    padding-left: 15px;
+                    display: flex;
+                    margin-bottom: 1rem;
+                    max-width: 100%;
+                    .link-to-city {
+                        text-decoration: none;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@include lg {
+    .Favorites-page {
+        .container {
+            .row-in-favorite {
+                .col-in-favorite {
+                    flex: 0 0 25%;
+                    max-width: 25%;
+                }
+            }
+        }
+    }
+}
+
+@include xl {
+    .Favorites-page {
+        .container {
+            .row-in-favorite {
+                .col-in-favorite {
+                    flex: 0 0 16.666666%;
+                    max-width: 16.666666%;
+                }
+            }
+        }
+    }
+}

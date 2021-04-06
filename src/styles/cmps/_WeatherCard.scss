@@ -1,0 +1,67 @@
+.weather-card-cmp {
+    &.in-home-page {
+        width: 50%;
+        .card {
+            flex-direction: row;
+            border: unset;
+            padding: 1rem;
+            width: 100%;
+            display: inline-flex;
+            background-color: transparent;
+            .card-img {
+                width: 80%;
+            }
+        }
+    }
+    &.in-favorites-page {
+        .card {
+            flex-direction: column;
+            border-radius: 0.25rem;
+            transition: .5s;
+            &:hover {
+                transform: scale(1.1);
+                background: linear-gradient(-45deg, #646464, #e9e9e9);
+            }
+        }
+        .card {
+            .card-img {
+                width: 80%;
+                padding: 1.25rem;
+            }
+            .card-body {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
+        }
+    }
+}
+
+@include sm {
+    .weather-card-cmp {
+        &.in-home-page {
+            width: 30%;
+            .card {
+                .card-body {
+                    padding: 1rem;
+                }
+            }
+        }
+    }
+}
+
+@include md {
+    .weather-card-cmp {
+        &.in-home-page {
+            width: 30%;
+        }
+    }
+}
+
+@include lg {
+    .weather-card-cmp {
+        &.in-home-page {
+            width: 20%;
+        }
+    }
+}
