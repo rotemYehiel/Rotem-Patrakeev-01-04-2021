@@ -11,73 +11,50 @@ const urlCurrWeather = `currentconditions/v1`
 const urlLocationByLatLon = `locations/v1/cities/geoposition/search`
 
 const getCityAutoComplete = async (cityValue) => {
-    const OptionsOfCities = _getFromStorage('Options Of Cities');
-    if (OptionsOfCities) {
-        return OptionsOfCities;
-    } else {
-        return axios.get(`${baseUrl}${urlAoutocompleteLocationSearch}`, {
-            params: {
-                apikey: apiKey,
-                q: cityValue,
-                language: defaultLan
-            }
+    return axios.get(`${baseUrl}${urlAoutocompleteLocationSearch}`, {
+        params: {
+            apikey: apiKey,
+            q: cityValue,
+            language: defaultLan
+        }
+    })
+        .then(res => {
+            _saveToStorage('Options Of Cities', res.data)
+            return res.data
+        }).catch((error) => {
+            throw new Error('You dont have accses to the API')
         })
-            .then(res => {
-                console.log("res:", res)
-                _saveToStorage('Options Of Cities', res.data)
-                return res.data
-            }).catch((error) => {
-                console.log("error:", error)
-                throw new Error('You dont have accses to the API')
-            })
-    }
 }
 const getCityForecasts = async (id) => {
-    const cityForecasts = _getFromStorage('Daily Forecasts');
-    if (cityForecasts) {
-        return cityForecasts;
-    } else {
-        return axios.get(`${baseUrl}${urlForcastsByCity}/${id}`, {
-            params: {
-                apikey: apiKey,
-                language: defaultLan,
-                details: false,
-                metric: false
-            }
-        }).then(res => {
-            console.log("res:", res)
-
-            const cityForecastsArr = res.data['DailyForecasts']
-            _saveToStorage('Daily Forecasts', cityForecastsArr)
-            return cityForecastsArr
-        }).catch((error) => {
-            console.log("error:", error)
-            throw new Error('You dont have accses to the API')
-        })
-    }
+    return axios.get(`${baseUrl}${urlForcastsByCity}/${id}`, {
+        params: {
+            apikey: apiKey,
+            language: defaultLan,
+            details: false,
+            metric: false
+        }
+    }).then(res => {
+        const cityForecastsArr = res.data['DailyForecasts']
+        _saveToStorage('Daily Forecasts', cityForecastsArr)
+        return cityForecastsArr
+    }).catch((error) => {
+        throw new Error('You dont have accses to the API')
+    })
 }
 const getCurrWeather = async (id) => {
-    const weatherNow = _getFromStorage('Now Weather');
-    if (weatherNow) {
-        return weatherNow;
-    } else {
-        return axios.get(`${baseUrl}${urlCurrWeather}/${id}`, {
-            params: {
-                apikey: apiKey,
-                language: defaultLan,
-                details: false,
-            }
-        }).then(res => {
-            console.log("res:", res)
-
-            const weatherForNow = res.data[0]
-            _saveToStorage('Now Weather', weatherForNow)
-            return weatherForNow
-        }).catch((error) => {
-            console.log("error:", error)
-            throw new Error('You dont have accses to the API')
-        })
-    }
+    return axios.get(`${baseUrl}${urlCurrWeather}/${id}`, {
+        params: {
+            apikey: apiKey,
+            language: defaultLan,
+            details: false,
+        }
+    }).then(res => {
+        const weatherForNow = res.data[0]
+        _saveToStorage('Now Weather', weatherForNow)
+        return weatherForNow
+    }).catch((error) => {
+        throw new Error('You dont have accses to the API')
+    })
 }
 const checkIsFavorite = (id) => {
     if (!_getFromStorage('Favorites')) {
@@ -111,8 +88,6 @@ const createNewCity = async (city) => {
                         toplevel: false
                     }
                 }).then(res => {
-                    console.log("res:", res)
-
                     _saveToStorage('Finding Location API', res.data)
                     _saveToStorage('Default City', {
                         name: res.data['ParentCity']['LocalizedName'],
@@ -123,7 +98,6 @@ const createNewCity = async (city) => {
                     })
                     return _getFromStorage('Default City');
                 }).catch((error) => {
-                    console.log("error:", error)
                     throw new Error('You dont have accses to the API')
                 })
             } else {
