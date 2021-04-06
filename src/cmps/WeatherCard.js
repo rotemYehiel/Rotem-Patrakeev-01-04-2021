@@ -22,8 +22,8 @@ const WeatherCard = (props) => {
         return <Spinner animation="border" variant="dark" />
     } else {
         return (
-            <div className={`weather-card-cmp ${(location.pathname === '/') ? 'in-home-page' : 'in-favorites-page'}`}>
-                <Card text={theme === 'dark' ? 'white' : 'dark'} bg={location.pathname === '/' ? false : theme} className='card' >
+            <div className={`weather-card-cmp ${(location.pathname === '/Favorites') ? 'in-favorites-page' : 'in-home-page'}`}>
+                <Card text={theme === 'dark' ? 'white' : 'dark'} bg={location.pathname === '/Favorites' ? theme : false} className='card' >
                     <Card.Img className="card-img" variant="top" src={`/svgs/${city.currWeather['WeatherIcon']}.svg`} />
                     <Card.Body className="card-body">
                         <Card.Title>{city.name}</Card.Title>
