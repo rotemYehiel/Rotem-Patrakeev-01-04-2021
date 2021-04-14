@@ -1,7 +1,5 @@
 import axios from 'axios';
 
-
-// const apiKey = 'CN37hasX3NF7aSmaxuMBeFY0G2dB2VAT';
 const apiKey = 'WFKelUZfbiA6S7GFiaq8OgExPynx7mIx';
 
 const defaultLan = 'en-us';
