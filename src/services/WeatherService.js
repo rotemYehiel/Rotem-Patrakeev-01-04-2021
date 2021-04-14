@@ -1,7 +1,8 @@
 import axios from 'axios';
 
 
-const apiKey = 'CN37hasX3NF7aSmaxuMBeFY0G2dB2VAT';
+// const apiKey = 'CN37hasX3NF7aSmaxuMBeFY0G2dB2VAT';
+const apiKey = 'WFKelUZfbiA6S7GFiaq8OgExPynx7mIx';
 
 const defaultLan = 'en-us';
 const baseUrl = `https://dataservice.accuweather.com/`
@@ -158,15 +159,17 @@ const loadTempUnits = () => {
 const toggleTempUnits = (currTempUnits) => {
     if (!_getFromStorage('Temp Units')) {
         _saveToStorage('Temp Units', currTempUnits);
-    }
-    switch (currTempUnits) {
-        case 'C': {
-            _saveToStorage('Temp Units', 'F');
-            break;
+    } else {
+        switch (currTempUnits) {
+            case 'C': {
+                _saveToStorage('Temp Units', 'F');
+                break;
+            }
+            default: {
+                _saveToStorage('Temp Units', 'C');
+            }
         }
-        default: {
-            _saveToStorage('Temp Units', 'C');
-        }
+
     }
     return _getFromStorage('Temp Units');
 }

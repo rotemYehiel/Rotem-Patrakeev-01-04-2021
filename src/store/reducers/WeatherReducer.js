@@ -1,7 +1,7 @@
 const initialState = {
     favorites: [],
     currCity: null,
-    tempUnits: 'C',
+    tempUnits: null,
     isDayTime: true
 }
 export default function WeatherReducer(state = initialState, action) {

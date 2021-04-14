@@ -34,20 +34,20 @@ const HomePage = (props) => {
 
     }, [currCity, props.match.params, dispatch])
 
-    const onSearch = async (ev) => {
-        setInputVal(ev.target.value);
-        const isEnglish = await detecLanguage(ev.target.value);
+    const onSearch = async (val) => {
+        console.log("val:", val)
+        const isEnglish = await detecLanguage(val);
         if (!isEnglish) {
-            setInputVal(ev.target.value.substr(0, ev.target.value.length - 1));
+            setInputVal(val.substr(0, val.length - 1));
             return;
         };
-        const OptionsOfCities = await dispatch(getCityAutoComplete(ev.target.value));
+        const OptionsOfCities = await dispatch(getCityAutoComplete(val));
         if (OptionsOfCities.length < 1) {
-            dispatch(openModal(`Can't find ${ev.target.value}. Try something else...`));
+            dispatch(openModal(`Can't find ${val}. Try something else...`));
             return;
         }
         setOptions(OptionsOfCities);
-        setIsOptionsOpen(true)
+        setIsOptionsOpen(true);
     }
     const detecLanguage = (inputVal) => {
         if (/^[a-zA-Z]+$/.test(inputVal) || inputVal === '') {
@@ -58,14 +58,17 @@ const HomePage = (props) => {
         }
     }
     const onClickOption = (option) => {
-        setIsOptionsOpen(false);
+        resetAll();
         if (option['Key'] === currCity.id) return;
-        setInputVal(option['LocalizedName']);
         setNewCity({ id: option['Key'], name: option['LocalizedName'] })
-        if (props.match.params.id !== undefined) props.history.push('/')
     }
     const setNewCity = async (city) => {
         await dispatch(setCity(city));
+    }
+    const resetAll = () => {
+        setInputVal('');
+        setOptions([]);
+        setIsOptionsOpen(false);
     }
 
     if (!currCity) {
@@ -74,7 +77,7 @@ const HomePage = (props) => {
         return (
             <div className="home-page">
                 <section className="input-sec">
-                    <SearchInput inputVal={inputVal} onSearch={onSearch} />
+                    <SearchInput setInputVal={setInputVal} inputVal={inputVal} onSearch={onSearch} />
                     {(isOptionsOpen && inputVal) ? (<CitiesOptionsList options={options} onClickOption={onClickOption} />) : ''}
                 </section>
                 { currCity ? <WeatherDetails currCity={currCity} /> : ''}
